@@ -1,5 +1,5 @@
 import math
-from itertools import product, combinations
+from itertools import combinations
 
 
 def getantinodesp1(antennas, rows,cols):

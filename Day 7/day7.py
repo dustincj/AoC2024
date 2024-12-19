@@ -4,13 +4,13 @@ def domaths(maths, ans):
     ops = ['* ','+ ','|| ']
     for oper in product(ops,repeat=len(maths)-1):
         formula = " ".join(o+v for o,v in zip([""]+list(oper),maths))
-        evals = evalretardo(formula)
+        evals = eval(formula)
         if evals == int(ans):
-            # print(eval(formula), "=",ans)
+            #print(eval(formula), "=",ans)
             return True
     return False
 
-def evalretardo(exp):
+def eval(exp):
     permutation_split: list[str] = exp.split()
     result: str = permutation_split[0]
     for i in range(1, len(permutation_split), 2):
@@ -19,7 +19,7 @@ def evalretardo(exp):
         elif permutation_split[i] == "*":
             result = str(int(result) * int(permutation_split[i + 1]))
         elif permutation_split[i] == "||":
-            result = result + str(evalretardo(permutation_split[i + 1]))
+            result = result + str(eval(permutation_split[i + 1]))
 
     return int(result)
     
